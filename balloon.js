@@ -228,16 +228,11 @@ function getSpeed() {
 function getZoom() {
 	let newScale = document.getElementById("slidy2").value;
 	
-	if (newScale < zoom) {
-		ctx.scale(1-Math.abs(zoom-newScale),1-Math.abs(zoom-newScale));
-		zoom = newScale;
-	}
+	let xOffSet = (1 - (newScale/zoom)) * 480;
+	let yOffSet = (1 - (newScale/zoom)) * 240;
 
-	if (newScale > zoom) {
-		ctx.scale(1+Math.abs(zoom-newScale),1+Math.abs(zoom-newScale));
-		zoom = newScale;
-	}
-
+	ctx.transform(newScale/zoom,0,0,newScale/zoom,xOffSet,yOffSet);
+	zoom = newScale;
 }
 
 let goingUp = false;
