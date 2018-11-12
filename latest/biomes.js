@@ -1,3 +1,25 @@
+class Loop {
+	constructor(id,scrollSpeed,y) {
+		this.image = document.getElementById(id);
+		this.scrollSpeed = scrollSpeed;
+		this.x = 0;
+		this.y = y;
+	}
+
+	draw() {
+		let scrollSpeed = this.scrollSpeed * speed;
+
+		this.x -= scrollSpeed;
+		if (this.x < -960) {
+			this.x = 0;
+		}
+
+		let height = this.image.height * (960 / this.image.width)
+		ctx.drawImage(this.image, this.x, cam.height+this.y, 960, height);
+		ctx.drawImage(this.image, this.x + 960, cam.height+this.y, 960 , height);
+	}
+}
+
 let environment = [];
 
 function changeBiome(number) {

@@ -3,12 +3,50 @@
 <head>
 	<title>TFG Soundtrack</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="../images/balloon.png">
+	<link rel="icon" type="image/png" href="favicon.png">
+
+	<style>
+	#flex-container {
+	  display: flex;
+	  flex-wrap: nowrap;
+	}
+
+	#flex-container > div {
+	  margin: 10px;
+	}
+
+	#flex-container > div > img {
+		max-width: 95vh;
+		width: 100%;
+		position: absolute;
+		right: 0px;
+	}
+
+	#otherImg {
+		display: none;
+		width: 100%;
+	}	
+
+	@media only screen and (max-width: 900px) {
+	    #flex-container {
+	        display: block;
+	        flex-wrap: wrap;
+	    }
+
+	    #flex-container > div > img {
+	    	display: none;
+	    }
+
+	    #otherImg {
+	    	display: block;
+	    }
+	}						
+	</style>
 </head>
 
 <body>
-	<table>
-		<tr>
+	<div id="flex-container">
+		<div>
 			<h2>Pink Breeze</h2>
 			<audio controls src="Pink Breeze.mp3"></audio>
 			<h2>Hey, Look Over There!</h2>
@@ -29,11 +67,13 @@
 			<audio controls src="2nd cinematic.mp3"></audio>
 			<h2>Clouds</h2>
 			<audio controls src="Clouds.wav"></audio>
-		</tr>
-		<tr>
+		</div>
+		<div style="width:calc(100% - 300px);position:relative;right:0px">
 			<img src="cover.jpg">
-		</tr>
-	</table>
+		</div>
+	</div>
+
+	<img id="otherImg" src="cover.jpg">
 </body>
 
 </html>
