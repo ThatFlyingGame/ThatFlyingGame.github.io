@@ -5,7 +5,7 @@ let speed = 1;
 let goingUp = "initial";
 let loops = 0;
 
-let viewing = "menu";
+let viewing = "splash";
 setTimeout(function(){
 	viewing = "menu";
 },4000)
@@ -96,8 +96,8 @@ function draw() {
 			menuEnvironment[i].draw();
 		}
 		//stackBlurCanvasRGB("canvas",0,0,960,480,10);
-		canvas.crossOrigin = "Anonymous";
-		StackBlur.canvasRGB("canvas", 0, 0, 960, 480, 10);
+		// canvas.crossOrigin = "Anonymous";
+		// StackBlur.canvasRGB("canvas", 0, 0, 960, 480, 10);
 	}
 
 	if (viewing == "game") {

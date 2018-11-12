@@ -13,7 +13,11 @@ class SplashScreen {
 		ctx.font = "50px Calibri";
     	ctx.fillText("Hovel Co.", 410, 240);
 
-		this.balloonX += 6;
+    	ctx.fillStyle = "#999";
+    	ctx.font = "15px Calibri";
+    	ctx.fillText("Just a placeholder lol", 820, 470);
+
+		this.balloonX += 10;
 		ctx.fillStyle = "black";
 		ctx.fillRect(this.balloonX,this.balloonY, 960, 140);
 		ctx.drawImage(this.image, this.balloonX - 20, this.balloonY, 128, 128);
