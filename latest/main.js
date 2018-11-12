@@ -1,16 +1,16 @@
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 
-let speed = 0;
+let speed = 1;
 let goingUp = "initial";
 let loops = 0;
-let viewing = "splash";
+
+let viewing = "menu";
 setTimeout(function(){
-	viewing = "game";
+	viewing = "menu";
 },4000)
 
-
-let timer = setInterval(draw,1000/60);
+timer = setInterval(draw,1000/60);
 
 function keyDown(event) {
 	if (event.keyCode == 32) {
@@ -82,7 +82,22 @@ function draw() {
 	}
 
 	if (viewing == "menu") {
+		let sunriseSky = ctx.createLinearGradient(0,0,0,340);
+		sunriseSky.addColorStop(0,"#9f7c72");
+		sunriseSky.addColorStop(0.5,"#f28e27");
+		sunriseSky.addColorStop(1,"#f6530b");
+		ctx.fillStyle = sunriseSky;
+		ctx.fillRect(0,0,960,340);
 
+		let risingSun = document.getElementById("risingSun");
+		ctx.drawImage(risingSun, 150, 200);
+
+		for (var i=0; i<menuEnvironment.length;i++) {
+			menuEnvironment[i].draw();
+		}
+		//stackBlurCanvasRGB("canvas",0,0,960,480,10);
+		canvas.crossOrigin = "Anonymous";
+		StackBlur.canvasRGB("canvas", 0, 0, 960, 480, 10);
 	}
 
 	if (viewing == "game") {
@@ -111,6 +126,8 @@ function draw() {
 
 		cam.update();
 	}
+
+	
 }
 
 function getSpeed() {

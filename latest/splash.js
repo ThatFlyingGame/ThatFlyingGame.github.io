@@ -17,8 +17,6 @@ class SplashScreen {
 		ctx.fillStyle = "black";
 		ctx.fillRect(this.balloonX,this.balloonY, 960, 140);
 		ctx.drawImage(this.image, this.balloonX - 20, this.balloonY, 128, 128);
-
-		
 	}
 }
 
