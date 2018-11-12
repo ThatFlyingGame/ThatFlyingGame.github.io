@@ -4,7 +4,11 @@ let ctx = canvas.getContext("2d");
 let speed = 0;
 let goingUp = "initial";
 let loops = 0;
-let viewing = "game";
+let viewing = "splash";
+setTimeout(function(){
+	viewing = "game";
+},4000)
+
 
 let timer = setInterval(draw,1000/60);
 
@@ -74,7 +78,7 @@ function draw() {
 	ctx.imageSmoothingEnabled = false;
 
 	if (viewing == "splash") {
-
+		splash.draw();
 	}
 
 	if (viewing == "menu") {
