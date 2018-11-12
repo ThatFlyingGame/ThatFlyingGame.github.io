@@ -3,6 +3,8 @@
 <head>
 	<title>That Flying Game</title>
 	<link rel="icon" type="image/png" href="images/balloon.png">
+	<link href="https://fonts.googleapis.com/css?family=Dosis:500" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
 	<style>
 	#canvas {
 		box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
@@ -14,7 +16,7 @@
 </head>
 
 <body onkeydown="keyDown(event)" onkeyup="keyUp(event)">
-	<canvas id="canvas" width="960" height="480"></canvas>
+	<canvas id="canvas" width="960" height="480" onmousemove="getMousePos(event)" onclick="mouseClick()"></canvas>
 
 	<!-- menu -->
 	<img src="images/menu/sun.png" id="risingSun">

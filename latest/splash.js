@@ -10,8 +10,8 @@ class SplashScreen {
 		ctx.fillRect(0,0,960,480);
 
 		ctx.fillStyle = "white";
-		ctx.font = "50px Calibri";
-    	ctx.fillText("Hovel Co.", 410, 240);
+		ctx.font = "65px Philosopher";
+    	ctx.fillText("Hovel Co.", 370, 240);
 
     	ctx.fillStyle = "#999";
     	ctx.font = "15px Calibri";

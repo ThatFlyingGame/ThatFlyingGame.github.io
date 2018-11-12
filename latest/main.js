@@ -25,6 +25,19 @@ function keyUp(event) {
 	}
 }
 
+let mouseX;
+let mouseY;
+function getMousePos(event) {
+	mouseX = event.offsetX;
+	mouseY = event.offsetY;
+}
+
+function mouseClick() {
+	if (viewing == "menu" && menuBtns[0].hovered) {
+		viewing = "game";
+	}
+}
+
 class Camera {
 	constructor() {
 		this.x;
@@ -82,22 +95,7 @@ function draw() {
 	}
 
 	if (viewing == "menu") {
-		let sunriseSky = ctx.createLinearGradient(0,0,0,340);
-		sunriseSky.addColorStop(0,"#9f7c72");
-		sunriseSky.addColorStop(0.5,"#f28e27");
-		sunriseSky.addColorStop(1,"#f6530b");
-		ctx.fillStyle = sunriseSky;
-		ctx.fillRect(0,0,960,340);
-
-		let risingSun = document.getElementById("risingSun");
-		ctx.drawImage(risingSun, 150, 200);
-
-		for (var i=0; i<menuEnvironment.length;i++) {
-			menuEnvironment[i].draw();
-		}
-		//stackBlurCanvasRGB("canvas",0,0,960,480,10);
-		// canvas.crossOrigin = "Anonymous";
-		// StackBlur.canvasRGB("canvas", 0, 0, 960, 480, 10);
+		drawMenu();
 	}
 
 	if (viewing == "game") {
