@@ -1,0 +1,49 @@
+<html>
+
+<head>
+	<style>
+		img {
+			display: none;
+		}
+		canvas {
+			border: 1px solid;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Instructions</h1>
+	<p>1. Put frames, named 'frame_0.png', 'frame_1.png', etc. in frames folder</p>
+	<p>2. Enter the number of frames and click the go button</p>
+	<input type="number" id="numInput">
+	<button onclick="framify(document.getElementById('numInput').value)">GO!</button>
+	<p>3. Right click the canvas and save image</p>
+
+	<canvas id="canvas"></canvas>
+
+	<script type="text/javascript">
+		let canvas = document.getElementById("canvas");
+		let ctx = canvas.getContext("2d");
+
+		function framify(frameNum) {
+			for (let i=0;i<frameNum;i++) {
+				let frame = document.createElement("img");
+				frame.src = "frames/frame_"+i+".png";
+				frame.id = "frame"+i;
+				document.getElementsByTagName("body")[0].appendChild(frame);
+			}
+
+			setTimeout(function() {
+				let frame1 = document.getElementById("frame1");
+				canvas.width = frame1.width;
+				canvas.height = frame1.height * frameNum;
+				for (let i=0;i<frameNum;i++) {
+					ctx.drawImage(document.getElementById("frame"+i),0,frame1.height*i);
+				}
+			},100);
+			
+		}
+	</script>
+</body>
+
+</html>
