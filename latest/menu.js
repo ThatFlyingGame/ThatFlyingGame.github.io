@@ -67,6 +67,8 @@ function drawMenu() {
 	//stackBlurCanvasRGB("canvas",0,0,960,480,10);
 	// canvas.crossOrigin = "Anonymous";
 	//StackBlur.canvasRGBA("canvas", 0, 0, 960, 480, 10);
+	// StackBlur.canvasRGB("canvas", 0, 0, 960, 480, 10);'
+
 
 	ctx.fillStyle = "white";
 	ctx.textAlign="center";
