@@ -10,6 +10,8 @@ setTimeout(function(){
 	viewing = "menu";
 },4000)
 
+let animations = [];
+
 timer = setInterval(draw,1000/60);
 
 function keyDown(event) {
@@ -35,6 +37,7 @@ function getMousePos(event) {
 function mouseClick() {
 	if (viewing == "menu" && menuBtns[0].hovered) {
 		viewing = "game";
+		canvas.style.cursor = "default";
 	}
 }
 
@@ -125,6 +128,9 @@ function draw() {
 		cam.update();
 	}
 
+	for (let i=0;i<animations.length;i++) {
+		animations[i].draw();
+	}
 	
 }
 

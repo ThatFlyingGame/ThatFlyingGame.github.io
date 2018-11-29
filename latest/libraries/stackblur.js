@@ -361,6 +361,7 @@
       if (isNaN(radius) || radius < 1) {
         return;
       }
+      img.crossOrigin = "Anonymous";
 
       radius |= 0;
       let imageData = getImageDataFromCanvas(canvas, topX, topY, width, height);

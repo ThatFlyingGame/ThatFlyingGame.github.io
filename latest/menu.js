@@ -9,6 +9,7 @@ class MenuButton {
 		this.lft = x - 100;
 		this.rgt = x + 100;
 		this.hovered = false;
+		this.wasHovered = false;
 	}
 
 	draw() {
@@ -20,6 +21,13 @@ class MenuButton {
 			this.hovered = false;
 			ctx.fillStyle = "white";
 		}
+
+		if(this.hovered && !this.wasHovered) {
+			document.getElementById("menuTick").load();
+			document.getElementById("menuTick").play();
+		}
+
+		this.wasHovered = this.hovered;
 		
 		ctx.font = this.fontSize+"px Dosis"
 		ctx.fillText(this.text,this.x,this.y);
@@ -58,7 +66,7 @@ function drawMenu() {
 
 	//stackBlurCanvasRGB("canvas",0,0,960,480,10);
 	// canvas.crossOrigin = "Anonymous";
-	// StackBlur.canvasRGB("canvas", 0, 0, 960, 480, 10);
+	//StackBlur.canvasRGBA("canvas", 0, 0, 960, 480, 10);
 
 	ctx.fillStyle = "white";
 	ctx.textAlign="center";

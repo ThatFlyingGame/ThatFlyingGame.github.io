@@ -6,13 +6,21 @@
 	<link rel="icon" type="image/png" href="favicon.png">
 
 	<style>
+	body {
+		overflow: hidden;
+	}
 	#flex-container {
 	  display: flex;
 	  flex-wrap: nowrap;
+	 
 	}
 
 	#flex-container > div {
 	  margin: 10px;
+	  padding-right: 60px;
+	  height: 95vh;
+	  overflow-y: scroll;
+	  overflow-x: hidden;
 	}
 
 	#flex-container > div > img {
@@ -28,10 +36,19 @@
 	}	
 
 	@media only screen and (max-width: 900px) {
+		body {
+			overflow: scroll;
+		}
+
 	    #flex-container {
 	        display: block;
 	        flex-wrap: wrap;
 	    }
+
+	    #flex-container > div {
+		  height: auto;
+		  overflow: auto;
+		}
 
 	    #flex-container > div > img {
 	    	display: none;
