@@ -35,14 +35,14 @@ class MenuButton {
 }
 
 let menuBtns = [
-	new MenuButton("play",480,260,50),
-	new MenuButton("levels",480,340,50),
-	new MenuButton("settings",480,420,50)
+	new MenuButton("play",480,240,50),
+	new MenuButton("levels",480,320,50),
+	new MenuButton("settings",480,400,50)
 ];
 
 function drawMenu() {
 	ctx.fillStyle = "white";
-	ctx.textAlign="center";
+	ctx.textAlign = "center";
 
 	ctx.font = "75px Philosopher"
 	ctx.fillText("That Flying Game",480,120);
@@ -54,4 +54,47 @@ function drawMenu() {
 	}
 	canvas.style.cursor = "initial";
 	if (oneHovered) canvas.style.cursor = "pointer";
+}
+
+class startButton {
+	constructor() {
+		this.x = 450;
+		this.y = 240;
+		this.fontSize = 50;
+		this.top = this.y - this.fontSize;
+		this.btm = this.y + this.fontSize/2;
+		this.lft = this.x - 50;
+		this.rgt = this.x + 150;
+		this.hovered = false;
+	}
+
+	draw() {
+		ctx.fillStyle = "#333";
+		ctx.fillRect(0,0,960,480);
+
+		ctx.font = "0px Philosopher"
+		ctx.fillText("filler to load google font",0,0);
+
+		ctx.fillStyle = "#0072ff";
+		ctx.fillRect(this.lft,this.top,this.rgt - this.lft,this.btm - this.top);
+
+		if (mouseY > this.top && mouseY < this.btm && mouseX > this.lft && mouseX < this.rgt) {
+			this.hovered = true;
+			ctx.fillStyle = "#FFFFFFAA";
+			canvas.style.cursor = "pointer";
+
+		} else {
+			this.hovered = false;
+			ctx.fillStyle = "white";
+			canvas.style.cursor = "default";
+		}
+
+		ctx.font = "50px Dosis"
+		ctx.fillText("start",this.x,this.y);
+	}
+}
+let startBtn = new startButton();
+
+function drawStartButton() {
+	startBtn.draw();
 }

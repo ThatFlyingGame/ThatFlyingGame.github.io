@@ -5,10 +5,7 @@ let speed = 1;
 let goingUp = "initial";
 let loops = 0;
 
-let viewing = "menu";
-// setTimeout(function(){
-// 	viewing = "menu";
-// },4000)
+let viewing = "start";
 
 let animations = [];
 
@@ -39,6 +36,19 @@ function getMousePos(event) {
 }
 
 function mouseClick() {
+	if (viewing == "start" && startBtn.hovered) {
+		
+		viewing = "splash";
+		document.getElementById("splashVideo").play();
+		canvas.style.cursor = "default";
+
+		setTimeout(function(){
+			viewing = "menu";
+			document.getElementById("splashVideo").style.display = "none";
+			document.getElementById("menuBackground").play();
+		},6000)
+	}
+
 	if (viewing == "menu" && menuBtns[0].hovered) {
 		viewing = "game";
 		canvas.style.cursor = "default";
@@ -97,8 +107,8 @@ function draw() {
 
 	ctx.imageSmoothingEnabled = false;
 
-	if (viewing == "splash") {
-		splash.draw();
+	if (viewing == "start") {
+		drawStartButton();
 	}
 
 	if (viewing == "menu") {

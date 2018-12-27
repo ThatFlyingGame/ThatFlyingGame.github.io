@@ -103,4 +103,15 @@ function changeBiome(number) {
 			new Loop("trees",1.1,334)
 		]
 	}
+
+	//desert
+	if (number == 4) {
+		environment = [
+			new Loop("desertMountains",0.5,200),
+			new Loop("dunes2",0.7,250),
+			new Loop("dunes",0.8,240),
+			balloon,
+			new Loop("sand",1,350)
+		]
+	}
 }

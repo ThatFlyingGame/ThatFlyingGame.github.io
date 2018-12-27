@@ -19,7 +19,8 @@
 	  position: relative;
 	}
 	#canvas,
-	#menuBackground {
+	#menuBackground,
+	#splashVideo {
 	  width: 100%;
 	  height: 100%;
 	  position: absolute;
@@ -33,9 +34,13 @@
 
 	<div id="container">
 		
-		<video id="menuBackground" width="960" autoplay="autoplay" loop>
+		<video id="menuBackground" width="960" loop>
 	  		<source src="images/menu/menu-background.mp4" type="video/mp4">
 		</video>
+		<video id="splashVideo" width="960">
+	  		<source src="images/splash/splash.mp4" type="video/mp4">
+		</video>
+		
 		<canvas id="canvas" width="960" height="480" onmousemove="getMousePos(event)" onclick="mouseClick()"></canvas>
 	</div>
 
@@ -75,6 +80,12 @@
 	<img src="images/forest/trees.png" id="trees">
 	<img src="images/forest/trees2.png" id="trees2">
 
+	<!-- desert biome -->
+	<img src="images/desert/desert-mountains.png" id="desertMountains">
+	<img src="images/desert/dunes2.png" id="dunes2">
+	<img src="images/desert/dunes.png" id="dunes">
+	<img src="images/desert/sand.png" id="sand">
+	
 	<!-- entities -->
 	<img src="images/balloon.png" id="balloon">
 	<img src="images/leaf-right_20f.png" id="leafRight">
