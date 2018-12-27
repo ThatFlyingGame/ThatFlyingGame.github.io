@@ -5,7 +5,7 @@ let speed = 1;
 let goingUp = "initial";
 let loops = 0;
 
-let viewing = "menu";
+let viewing = "game";
 // setTimeout(function(){
 // 	viewing = "menu";
 // },4000)
