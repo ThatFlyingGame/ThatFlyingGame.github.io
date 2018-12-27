@@ -1,9 +1,13 @@
 class Loop {
-	constructor(id,scrollSpeed,y) {
+	constructor(id,scrollSpeed,y,lifespan) {
+		this.id = id;
 		this.image = document.getElementById(id);
 		this.scrollSpeed = scrollSpeed;
 		this.x = 0;
 		this.y = y;
+		this.state = 1;
+		this.loopNum = 1;
+		this.lifespan = lifespan;
 	}
 
 	draw() {
@@ -11,12 +15,37 @@ class Loop {
 
 		this.x -= scrollSpeed;
 		if (this.x < -960) {
+			if (this.id == "housesFence") console.log("here")
+			this.loopNum++;
+			
+			if (this.state == 0) this.state = 1;
+			if (this.state == 2) {
+				this.selfDestruct();
+				this.state = 4;
+			}
+
+			if (this.loopNum >= this.lifespan) {
+				this.state = 2;
+				changeBiome(this.id);
+			}
+
 			this.x = 0;
 		}
 
 		let height = this.image.height * (960 / this.image.width)
-		ctx.drawImage(this.image, this.x, cam.height+this.y, 960, height);
-		ctx.drawImage(this.image, this.x + 960, cam.height+this.y, 960 , height);
+		if (this.state == 1 || this.state == 2) ctx.drawImage(this.image, this.x, cam.height+this.y, 960, height);
+		
+		if (this.state == 1 || this.state == 0 || this.state == 3) ctx.drawImage(this.image, this.x + 960, cam.height+this.y, 960 , height);
+
+		//if (this.state == 3) ctx.drawImage(this.image, this.x + 960, cam.height+this.y, 960 , height);
+	}
+
+	selfDestruct() {
+		for (let i=0;i<environment.length;i++) {
+			if (environment[i].id == this.id) {
+				environment.splice(i,1);
+			}
+		}
 	}
 }
 
@@ -34,7 +63,7 @@ function changeBiome(number) {
 			new Loop("mountains3",0.5,200),
 			new Loop("hills2",0.8,250),
 			new Loop("hills",0.9,250),
-			new Loop("beach",1,420),
+			new Loop("beach",1,420,1),
 			new Loop("sea",1,680),
 			balloon
 		]
@@ -42,16 +71,20 @@ function changeBiome(number) {
 
 	//farmland with houses
 	if (number == 1) {
-		//changeBiome(0)
-		environment.splice(8,0,balloon);
-		environment.pop();
-		environment.pop();
+		environment.splice(8,0,balloon);	//move balloon to different layer
+		environment.pop();				 	//remove old balloon
+		environment.pop();			     	//remove the sea layer	
 	}
 
-	//farmland with fence
-	if (number == 2) {
-		changeBiome(1);
-		environment[9] = new Loop("fence",1,400);
+	//house to fence transition
+	if (number == "beach") {
+		environment.splice(9,0,new Loop("housesFence",1,420,1)); //add the fence
+		environment[9].state = 0;			//make the fence fade in
+		//environment[9].x = 960-2;
+	}
+
+	if (number == "housesFence") {
+
 	}
 
 	//forest

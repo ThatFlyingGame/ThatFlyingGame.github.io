@@ -70,21 +70,21 @@ function drawMenu() {
 	// StackBlur.canvasRGB("canvas", 0, 0, 960, 480, 10);'
 
 
-	ctx.fillStyle = "white";
-	ctx.textAlign="center";
+	// ctx.fillStyle = "white";
+	// ctx.textAlign="center";
 
-	ctx.font = "75px Philosopher"
-	ctx.fillText("That Flying Game",480,120);
+	// ctx.font = "75px Philosopher"
+	// ctx.fillText("That Flying Game",480,120);
 
-	ctx.fillStyle = "white";
-	ctx.font = "20px Comic Sans MS";
-	ctx.fillText("Still no blur :(", 850, 470);
+	// ctx.fillStyle = "white";
+	// ctx.font = "20px Comic Sans MS";
+	// ctx.fillText("Still no blur :(", 850, 470);
 
-	let oneHovered = false;
-	for (let i=0;i<menuBtns.length;i++) {
-		menuBtns[i].draw();
-		if (menuBtns[i].hovered) oneHovered = true;
-	}
-	canvas.style.cursor = "initial";
-	if (oneHovered) canvas.style.cursor = "pointer";
+	// let oneHovered = false;
+	// for (let i=0;i<menuBtns.length;i++) {
+	// 	menuBtns[i].draw();
+	// 	if (menuBtns[i].hovered) oneHovered = true;
+	// }
+	// canvas.style.cursor = "initial";
+	// if (oneHovered) canvas.style.cursor = "pointer";
 }

@@ -5,10 +5,10 @@ let speed = 1;
 let goingUp = "initial";
 let loops = 0;
 
-let viewing = "splash";
-setTimeout(function(){
-	viewing = "menu";
-},4000)
+let viewing = "menu";
+// setTimeout(function(){
+// 	viewing = "menu";
+// },4000)
 
 let animations = [];
 
