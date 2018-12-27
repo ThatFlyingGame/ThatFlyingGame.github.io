@@ -34,15 +34,6 @@ class MenuButton {
 	}
 }
 
-let menuEnvironment = [
-	new Loop("mist2",0.1,600),
-	new Loop("darkMountains2",0.15,600),
-	new Loop("darkMountains",0.2,600),
-	new Loop("mist",0.25,610),
-	new Loop("darkForest2",0.4,680),
-	new Loop("darkForest",0.5,730)
-]
-
 let menuBtns = [
 	new MenuButton("play",480,260,50),
 	new MenuButton("levels",480,340,50),
@@ -50,41 +41,17 @@ let menuBtns = [
 ];
 
 function drawMenu() {
-	let sunriseSky = ctx.createLinearGradient(0,0,0,340);
-	sunriseSky.addColorStop(0,"#9f7c72");
-	sunriseSky.addColorStop(0.5,"#f28e27");
-	sunriseSky.addColorStop(1,"#f6530b");
-	ctx.fillStyle = sunriseSky;
-	ctx.fillRect(0,0,960,340);
+	ctx.fillStyle = "white";
+	ctx.textAlign="center";
 
-	let risingSun = document.getElementById("risingSun");
-	ctx.drawImage(risingSun, 150, 200);
+	ctx.font = "75px Philosopher"
+	ctx.fillText("That Flying Game",480,120);
 
-	for (var i=0; i<menuEnvironment.length;i++) {
-		menuEnvironment[i].draw();
+	let oneHovered = false;
+	for (let i=0;i<menuBtns.length;i++) {
+		menuBtns[i].draw();
+		if (menuBtns[i].hovered) oneHovered = true;
 	}
-
-	//stackBlurCanvasRGB("canvas",0,0,960,480,10);
-	// canvas.crossOrigin = "Anonymous";
-	//StackBlur.canvasRGBA("canvas", 0, 0, 960, 480, 10);
-	// StackBlur.canvasRGB("canvas", 0, 0, 960, 480, 10);'
-
-
-	// ctx.fillStyle = "white";
-	// ctx.textAlign="center";
-
-	// ctx.font = "75px Philosopher"
-	// ctx.fillText("That Flying Game",480,120);
-
-	// ctx.fillStyle = "white";
-	// ctx.font = "20px Comic Sans MS";
-	// ctx.fillText("Still no blur :(", 850, 470);
-
-	// let oneHovered = false;
-	// for (let i=0;i<menuBtns.length;i++) {
-	// 	menuBtns[i].draw();
-	// 	if (menuBtns[i].hovered) oneHovered = true;
-	// }
-	// canvas.style.cursor = "initial";
-	// if (oneHovered) canvas.style.cursor = "pointer";
+	canvas.style.cursor = "initial";
+	if (oneHovered) canvas.style.cursor = "pointer";
 }

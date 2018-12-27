@@ -5,7 +5,7 @@ let speed = 1;
 let goingUp = "initial";
 let loops = 0;
 
-let viewing = "game";
+let viewing = "menu";
 // setTimeout(function(){
 // 	viewing = "menu";
 // },4000)
@@ -13,6 +13,10 @@ let viewing = "game";
 let animations = [];
 
 timer = setInterval(draw,1000/60);
+
+window.onload = function() {
+	document.getElementById("menuBackground").load();
+}
 
 function keyDown(event) {
 	if (event.keyCode == 32) {
