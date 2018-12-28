@@ -16,6 +16,7 @@
 </head>
 
 <body>
+	Background colour: <input type="color" id="bodyColour" onmouseleave="updateBackground()">
 	<h1>Instructions</h1>
 	<p>1. Place image named "image.png" in root directory</p>
 	<p>2. Enter the number of frames, and framerate and click the go button</p>
@@ -32,6 +33,11 @@
 	window.onload = function() {
 		canvas = document.getElementById("canvas");
 		ctx = canvas.getContext("2d");
+		document.getElementById("bodyColour").value = "#CCEEEE";
+	}
+
+	function updateBackground() {
+		document.getElementsByTagName("body")[0].style.background = document.getElementById("bodyColour").value;
 	}
 
 	let numberOfFrames; 
