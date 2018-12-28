@@ -1,0 +1,75 @@
+<html>
+
+<head>
+	<style>
+		img {
+			display: none;
+		}
+		#canvas {
+			display: block;
+			margin-top: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Instructions</h1>
+	<p>1. Place image named "image.png" in root directory</p>
+	<p>2. Enter the number of frames, and framerate and click the go button</p>
+	<input type="number" id="frameNum" placeholder="Number of frames"></input>
+	<input type="number" id="frameRate" placeholder="Framerate" ></inout>
+	<button onclick="sizeCanvas();createAnimation();">GO!</button>
+
+	<canvas id="canvas"></canvas>
+	<img src="image.png" id="image">
+
+	<script type="text/javascript">
+
+	let ctx, canvas;
+	window.onload = function() {
+		canvas = document.getElementById("canvas");
+		ctx = canvas.getContext("2d");
+	}
+
+	let numberOfFrames; 
+	function sizeCanvas() {
+		let theImage = document.getElementById("image");
+		canvas.width = theImage.width;
+		canvas.height = theImage.height / document.getElementById('frameNum').value;
+		canvas.style.boxShadow = "1px 1px 5px rgba(0, 0, 0, 0.2)";
+		numberOfFrames = document.getElementById('frameNum').value;
+	}
+
+	let theAnimation, timer;
+	function createAnimation() {
+		theAnimation = new FrameAnimation();
+		timer = setInterval(theAnimation.draw,theAnimation.delay);
+	}
+
+	let currentFrame = 0;
+
+	class FrameAnimation {
+		constructor() {
+			let frameRate = document.getElementById('frameRate').value;
+			this.image = document.getElementById("image");
+			this.delay = 1000/frameRate;
+			currentFrame = 0;
+		}
+		
+		draw() {
+			ctx.clearRect(0,0,canvas.width,canvas.height);
+
+			let frameHeight = this.image.height / numberOfFrames;
+			let frameWidth = this.image.width;
+			ctx.drawImage(this.image, 0, currentFrame * frameHeight, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
+			
+			currentFrame++;
+
+			if (currentFrame >= numberOfFrames) currentFrame = 0;
+		}
+	}
+
+	</script>
+</body>
+
+</html>
