@@ -13,12 +13,12 @@
 </head>
 
 <body>
-	Canvas colour: <input type="color" id="bodyColour">
-	<h1>Instructions</h1>
+	<h1>Animation Tester</h1>
 	<p>1. Place image named "image.png" in root directory</p>
-	<p>2. Enter the number of frames, and framerate and click the go button</p>
+	<p>2. Enter the number of frames, the framerate, and click the go button</p>
+	<p>3. Change the canvas colour if you can't see everything: <input type="color" id="bodyColour"></p>
 	<input type="number" id="frameNum" placeholder="Number of frames"></input>
-	<input type="number" id="frameRate" placeholder="Framerate" ></inout>
+	<input type="number" id="frameRate" placeholder="Framerate" ></input>
 	<button onclick="sizeCanvas();createAnimation();">GO!</button>
 
 	<canvas id="canvas"></canvas>
