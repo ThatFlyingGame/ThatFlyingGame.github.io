@@ -33,7 +33,6 @@
 <body onkeydown="keyDown(event)" onkeyup="keyUp(event)">
 
 	<div id="container">
-		
 		<video id="menuBackground" width="960" loop>
 	  		<source src="images/menu/menu-background.mp4" type="video/mp4">
 		</video>
@@ -95,14 +94,12 @@
 	<img src="images/rope_1.png" id="rope_1">
 	<img src="images/rope_2.png" id="rope_2">
 
-	<!-- <img src="images/bird_0.png" id="bird_0">
-	<img src="images/bird_1.png" id="bird_1">
-	<img src="images/bird_2.png" id="bird_2">
-	<img src="images/bird_3.png" id="bird_3">
-	<img src="images/bird_4.png" id="bird_4">
-	<img src="images/bird_5.png" id="bird_5"> -->
-
+	<!-- sfx -->
 	<audio type="audio/mpeg" src="sfx/menu-tick.mp3" id="menuTick"></audio>
+
+	<!-- music -->
+	<audio type="audio/mpeg" src="../music/menu pt.1.mp3" id="musicMenu"></audio>
+	<audio type="audio/mpeg" src="../music/menu pt.2.mp3" id="musicMenu2"></audio>
 
 	<input onmousemove="getSpeed()" type="range" min="0" max="2" step="0.1" id="slidy">
 
@@ -110,7 +107,6 @@
 
 	<script type="text/javascript" src="libraries/stackblur.js"></script>
 	<script type="text/javascript" src="balloon.js"></script>
-	<script type="text/javascript" src="splash.js"></script>
 	<script type="text/javascript" src="animation.js"></script>
 	<script type="text/javascript" src="entities.js"></script>
 	<script type="text/javascript" src="biomes.js"></script>

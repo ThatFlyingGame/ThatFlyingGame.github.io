@@ -46,12 +46,14 @@ function mouseClick() {
 			viewing = "menu";
 			document.getElementById("splashVideo").style.display = "none";
 			document.getElementById("menuBackground").play();
+			document.getElementById("musicMenu").play();
 		},6000)
 	}
 
 	if (viewing == "menu" && menuBtns[0].hovered) {
 		viewing = "game";
 		canvas.style.cursor = "default";
+		document.getElementById("musicMenu").pause();
 	}
 }
 
