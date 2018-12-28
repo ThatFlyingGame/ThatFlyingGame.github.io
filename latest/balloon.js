@@ -13,6 +13,7 @@ class Balloon {
 	draw() {
 		if (goingUp == true) this.vel = this.riseV
 		else this.vel = -this.fallV;
+		
 
 		if (this.onBeach) cam.height += this.vel;
 		else this.y -= this.vel;

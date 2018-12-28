@@ -13,18 +13,22 @@ timer = setInterval(draw,1000/60);
 
 window.onload = function() {
 	document.getElementById("menuBackground").load();
+	document.getElementById("balloonBooster").load();
 }
 
 function keyDown(event) {
 	if (event.keyCode == 32) {
 		if (goingUp = "initial") speed = 1;
 		goingUp = true;
+		document.getElementById("balloonBooster").volume = 0.4;
+		document.getElementById("balloonBooster").play();
 	}
 }
 
 function keyUp(event) {
 	if (event.keyCode == 32) {
 		goingUp = false;
+		document.getElementById("balloonBooster").pause();
 	}
 }
 
@@ -48,12 +52,19 @@ function mouseClick() {
 			document.getElementById("menuBackground").play();
 			document.getElementById("musicMenu").play();
 		},6000)
+		
+		setTimeout(function(){
+			document.getElementById("musicMenu2").loop = true;
+			document.getElementById("musicMenu2").play();
+		},87000)
 	}
 
 	if (viewing == "menu" && menuBtns[0].hovered) {
 		viewing = "game";
 		canvas.style.cursor = "default";
 		document.getElementById("musicMenu").pause();
+		document.getElementById("musicMenu2").pause();
+		document.getElementById("musicMenu2").loop = false;
 	}
 }
 
