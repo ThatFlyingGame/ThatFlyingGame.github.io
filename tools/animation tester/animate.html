@@ -37,6 +37,9 @@
 		canvas.width = theImage.width;
 		canvas.height = theImage.height / document.getElementById('frameNum').value;
 		canvas.style.boxShadow = "1px 1px 5px rgba(0, 0, 0, 0.2)";
+		document.getElementById("frameNum").style.display = "none";
+		document.getElementById("frameRate").style.display = "none";
+		document.getElementsByTagName("button")[0].style.display = "none";
 		numberOfFrames = document.getElementById('frameNum').value;
 	}
 
