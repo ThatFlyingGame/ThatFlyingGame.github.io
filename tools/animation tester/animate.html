@@ -9,14 +9,11 @@
 			display: block;
 			margin-top: 25px;
 		}
-		body {
-			background: #CCEEEE;
-		}
 	</style>
 </head>
 
 <body>
-	Background colour: <input type="color" id="bodyColour" onmouseleave="updateBackground()">
+	Canvas colour: <input type="color" id="bodyColour">
 	<h1>Instructions</h1>
 	<p>1. Place image named "image.png" in root directory</p>
 	<p>2. Enter the number of frames, and framerate and click the go button</p>
@@ -36,9 +33,9 @@
 		document.getElementById("bodyColour").value = "#CCEEEE";
 	}
 
-	function updateBackground() {
-		document.getElementsByTagName("body")[0].style.background = document.getElementById("bodyColour").value;
-	}
+	// function updateBackground() {
+	// 	document.getElementsByTagName("body")[0].style.background = document.getElementById("bodyColour").value;
+	// }
 
 	let numberOfFrames; 
 	function sizeCanvas() {
@@ -70,6 +67,9 @@
 		
 		draw() {
 			ctx.clearRect(0,0,canvas.width,canvas.height);
+
+			ctx.fillStyle = document.getElementById("bodyColour").value;
+			ctx.fillRect(0,0,canvas.width,canvas.height);
 
 			let frameHeight = this.image.height / numberOfFrames;
 			let frameWidth = this.image.width;
