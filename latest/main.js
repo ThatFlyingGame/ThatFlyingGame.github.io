@@ -66,6 +66,10 @@ function mouseClick() {
 		document.getElementById("musicMenu2").pause();
 		document.getElementById("musicMenu2").loop = false;
 	}
+
+	if (viewing == "menu" && menuBtns[1].hovered) {
+		document.getElementById("todo").style.display = "block";
+	}
 }
 
 class Camera {

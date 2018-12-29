@@ -10,19 +10,21 @@ class MenuButton {
 		this.rgt = x + 100;
 		this.hovered = false;
 		this.wasHovered = false;
+		this.active = true;
 	}
 
 	draw() {
-		if (mouseY > this.top && mouseY < this.btm && mouseX > this.lft && mouseX < this.rgt) {
+		if (mouseY > this.top && mouseY < this.btm && mouseX > this.lft && mouseX < this.rgt && this.active) {
 			this.hovered = true;
 			ctx.fillStyle = "#FFFFFFAA";
-
 		} else {
 			this.hovered = false;
 			ctx.fillStyle = "white";
 		}
 
-		if(this.hovered && !this.wasHovered) {
+		if (!this.active) ctx.fillStyle = "#FFFFFFAA";
+
+		if(this.hovered && !this.wasHovered && this.active) {
 			document.getElementById("menuTick").load();
 			document.getElementById("menuTick").play();
 		}
@@ -36,9 +38,11 @@ class MenuButton {
 
 let menuBtns = [
 	new MenuButton("play",480,240,50),
-	new MenuButton("levels",480,320,50),
-	new MenuButton("settings",480,400,50)
+	new MenuButton("to do list",480,320,50),
+	new MenuButton("dev mode",480,400,50)
 ];
+
+menuBtns[2].active = false;
 
 function drawMenu() {
 	ctx.fillStyle = "white";

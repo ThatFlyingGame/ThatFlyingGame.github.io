@@ -27,6 +27,9 @@
 	  top: 0;
 	  left: 0;
 	}
+	#todo {
+		display: none;
+	}
 	</style>
 </head>
 
@@ -43,14 +46,17 @@
 		<canvas id="canvas" width="960" height="480" onmousemove="getMousePos(event)" onclick="mouseClick()"></canvas>
 	</div>
 
-	<!-- menu -->
-	<img src="images/menu/sun.png" id="risingSun">
-	<img src="images/menu/mist.png" id="mist">
-	<img src="images/menu/mist2.png" id="mist2">
-	<img src="images/menu/dark-mountains.png" id="darkMountains">
-	<img src="images/menu/dark-mountains2.png" id="darkMountains2">
-	<img src="images/menu/dark-forest.png" id="darkForest">
-	<img src="images/menu/dark-forest2.png" id="darkForest2">
+	<input onmousemove="getSpeed()" type="range" min="0" max="2" step="0.1" id="slidy">
+	<input type="range" min="1" max="3" step="0.01" value="1" id="slidy2">
+
+	<div id="todo">
+		<h1>To Do List</h1>
+		<ul>
+			<li>Draw hills</li>
+			<li>Work out howler.js</li>
+			<li>Make environment fade in/out correctly</li>
+		</ul>
+	</div>
 
 	<!-- sky -->
 	<img src="images/sky/clouds.png" id="clouds">
@@ -87,8 +93,8 @@
 	
 	<!-- entities -->
 	<img src="images/balloon.png" id="balloon">
-	<img src="images/leaf-right_20f.png" id="leafRight">
-	<img src="images/leaf-left_20f.png" id="leafLeft">
+	<!-- <img src="images/leaf-right_20f.png" id="leafRight">
+	<img src="images/leaf-left_20f.png" id="leafLeft"> -->
 
 	<img src="images/rope_0.png" id="rope_0">
 	<img src="images/rope_1.png" id="rope_1">
@@ -102,11 +108,7 @@
 	<audio type="audio/mpeg" src="music/menu pt.1.mp3" id="musicMenu"></audio>
 	<audio type="audio/mpeg" src="music/menu pt.2.mp3" id="musicMenu2"></audio>
 
-	<input onmousemove="getSpeed()" type="range" min="0" max="2" step="0.1" id="slidy">
-
-	<input type="range" min="1" max="3" step="0.01" value="1" id="slidy2">
-
-	<script type="text/javascript" src="libraries/stackblur.js"></script>
+	<script type="text/javascript" src="libraries/howler.js"></script>
 	<script type="text/javascript" src="balloon.js"></script>
 	<script type="text/javascript" src="animation.js"></script>
 	<script type="text/javascript" src="entities.js"></script>
