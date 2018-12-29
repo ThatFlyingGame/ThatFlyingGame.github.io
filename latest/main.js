@@ -41,7 +41,7 @@ function getMousePos(event) {
 
 function mouseClick() {
 	if (viewing == "start" && startBtn.hovered) {
-		
+
 		viewing = "splash";
 		document.getElementById("splashVideo").play();
 		canvas.style.cursor = "default";

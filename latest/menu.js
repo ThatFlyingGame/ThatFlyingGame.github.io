@@ -70,6 +70,7 @@ class startButton {
 		this.lft = this.x - 50;
 		this.rgt = this.x + 150;
 		this.hovered = false;
+		this.btnColour = "#0072ff";
 	}
 
 	draw() {
@@ -79,20 +80,23 @@ class startButton {
 		ctx.font = "0px Philosopher"
 		ctx.fillText("filler to load google font",0,0);
 
-		ctx.fillStyle = "#0072ff";
-		ctx.fillRect(this.lft,this.top,this.rgt - this.lft,this.btm - this.top);
+		// ctx.fillStyle = "#0072ff";
+		// ctx.fillRect(,,,this.btm - this.top);
+
+		drawRoundedRect(this.lft,this.top,this.rgt - this.lft,this.btm - this.top,100,this.btnColour);
 
 		if (mouseY > this.top && mouseY < this.btm && mouseX > this.lft && mouseX < this.rgt) {
 			this.hovered = true;
-			ctx.fillStyle = "#FFFFFFAA";
+			this.btnColour = "#0072ffdd";
 			canvas.style.cursor = "pointer";
 
 		} else {
 			this.hovered = false;
-			ctx.fillStyle = "white";
+			this.btnColour = "#0072ff";
 			canvas.style.cursor = "default";
 		}
 
+		ctx.fillStyle = "white";
 		ctx.font = "50px Dosis"
 		ctx.fillText("start",this.x,this.y);
 	}
@@ -101,4 +105,25 @@ let startBtn = new startButton();
 
 function drawStartButton() {
 	startBtn.draw();
+}
+
+function drawRoundedRect(x,y,w,h,r,c) {
+	let rad = r;
+	if (r >= w/2) rad = w/2; 
+	if (r >= h/2) rad = h/2;
+
+	ctx.fillStyle = c;
+
+	let wid = w - rad*2;
+	let hgt = h - rad;
+
+	ctx.beginPath();
+	ctx.arc(x+rad,y+rad,rad,Math.PI,1.5*Math.PI);
+	ctx.lineTo(x+wid,y);
+	ctx.arc(x+wid+rad,y+rad,rad,1.5*Math.PI,0);
+	ctx.lineTo(x+wid+rad*2,y+hgt);
+	ctx.arc(x+wid+rad,y+hgt,rad,0,0.5*Math.PI);
+	ctx.lineTo(x+rad,y+hgt+rad);
+	ctx.arc(x+rad,y+hgt,rad,0.5*Math.PI,Math.PI);
+	ctx.fill();
 }
