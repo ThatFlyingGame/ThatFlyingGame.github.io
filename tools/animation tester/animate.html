@@ -15,73 +15,40 @@
 <body>
 	<h1>Animation Tester</h1>
 	<p>1. Place image named "image.png" in root directory</p>
-	<p>2. Enter the number of frames, the framerate, and click the go button</p>
-	<p>3. Change the canvas colour if you can't see everything: <input type="color" id="bodyColour"></p>
-	<input type="number" id="frameNum" placeholder="Number of frames"></input>
-	<input type="number" id="frameRate" placeholder="Framerate" ></input>
-	<button onclick="sizeCanvas();createAnimation();">GO!</button>
+	<p>2. Enter the number of frames and framerate (this now updates live!)</p>
+	<p>3. Change the canvas colour if you can't see everything: <input type="color" id="canvasColour"></p>
+	<input onclick="start()" onkeyup="start()" type="number" id="frameNum" placeholder="Number of frames"></input>
+	<input onclick="start()" onkeyup="start()" type="number" id="frameRate" placeholder="Framerate" ></input>
 
 	<canvas id="canvas"></canvas>
 	<img src="image.png" id="image">
 
 	<script type="text/javascript">
 
-	let ctx, canvas;
+	let ctx, canvas
+	let theAnimation = 0;
 	window.onload = function() {
 		canvas = document.getElementById("canvas");
 		ctx = canvas.getContext("2d");
-		document.getElementById("bodyColour").value = "#CCEEEE";
+		document.getElementById("canvasColour").value = "#CCEEEE";
 	}
 
-	// function updateBackground() {
-	// 	document.getElementsByTagName("body")[0].style.background = document.getElementById("bodyColour").value;
-	// }
-
-	let numberOfFrames; 
-	function sizeCanvas() {
+	function start() {
 		let theImage = document.getElementById("image");
+		let numberOfFrames = document.getElementById("frameNum").value;
+		let rateOfFrames = document.getElementById("frameRate").value;
+
 		canvas.width = theImage.width;
-		canvas.height = theImage.height / document.getElementById('frameNum').value;
+		canvas.height = theImage.height / document.getElementById("frameNum").value;
 		canvas.style.boxShadow = "1px 1px 5px rgba(0, 0, 0, 0.2)";
-		document.getElementById("frameNum").style.display = "none";
-		document.getElementById("frameRate").style.display = "none";
-		document.getElementsByTagName("button")[0].style.display = "none";
-		numberOfFrames = document.getElementById('frameNum').value;
-	}
 
-	let theAnimation, timer;
-	function createAnimation() {
-		theAnimation = new FrameAnimation();
-		timer = setInterval(theAnimation.draw,theAnimation.delay);
-	}
-
-	let currentFrame = 0;
-
-	class FrameAnimation {
-		constructor() {
-			let frameRate = document.getElementById('frameRate').value;
-			this.image = document.getElementById("image");
-			this.delay = 1000/frameRate;
-			currentFrame = 0;
-		}
-		
-		draw() {
-			ctx.clearRect(0,0,canvas.width,canvas.height);
-
-			ctx.fillStyle = document.getElementById("bodyColour").value;
-			ctx.fillRect(0,0,canvas.width,canvas.height);
-
-			let frameHeight = this.image.height / numberOfFrames;
-			let frameWidth = this.image.width;
-			ctx.drawImage(this.image, 0, currentFrame * frameHeight, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
-			
-			currentFrame++;
-
-			if (currentFrame >= numberOfFrames) currentFrame = 0;
-		}
+		if (theAnimation !== 0) theAnimation.active = false;
+		theAnimation = new FrameAnimation(theImage,0,0,0,0,numberOfFrames,rateOfFrames,true);
 	}
 
 	</script>
+
+	<script type="text/javascript" src="animate.js"></script>
 </body>
 
 </html>
