@@ -53,28 +53,6 @@ class Leaf {
 	}
 }
 
-class Sun {
-	constructor() {
-		this.image = document.getElementById("sun");
-		this.x = 200;
-		this.y = 150;
-		this.r = 70;
-	}
-
-	draw() {
-		this.centreX = this.x + this.r;
-		this.centreY = cam.height+this.y + this.r;
-
-		let sunGradient = ctx.createRadialGradient(this.centreX,this.centreY,0,this.centreX,this.centreY,this.r);
-		sunGradient.addColorStop(0,"#FFCC00");
-		sunGradient.addColorStop(0.9,"#FFCC0000");
-		ctx.fillStyle = sunGradient;
-		ctx.fillRect(this.x,cam.height+this.y,this.r*2,this.r*2);
-
-		ctx.drawImage(this.image,this.x+(this.r/2),cam.height+this.y+(this.r/2));
-	}
-}
-
 let spawnFlockTimer = setInterval(spawnFlock, 2000);
 function spawnFlock() {
 	let flockSpawned = false;

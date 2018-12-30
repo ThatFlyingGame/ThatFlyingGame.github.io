@@ -1,9 +1,9 @@
-let animations = [];
+// let animations = [];
 
-function animate(i,x,y,n,f,l) {
+// function animate(i,x,y,n,f,l) {
 
 
-}
+// }
 
 class FrameAnimation {
 	constructor(image,x,y,dx,dy,numFrames,frameRate,loop,mode) {

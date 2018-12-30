@@ -61,14 +61,31 @@ function mouseClick() {
 
 	if (viewing == "menu" && menuBtns[0].hovered) {
 		viewing = "game";
-		canvas.style.cursor = "default";
-		document.getElementById("musicMenu").pause();
-		document.getElementById("musicMenu2").pause();
-		document.getElementById("musicMenu2").loop = false;
+		closeMenu();
 	}
 
 	if (viewing == "menu" && menuBtns[1].hovered) {
 		document.getElementById("todo").style.display = "block";
+	}
+
+	if (viewing == "menu" && menuBtns[2].hovered) {
+		viewing = "levelMenu";
+	}
+
+	if (viewing == "levelMenu") {
+		if (levelBtns[0].hovered) {
+			closeMenu();
+			viewing = "levels";
+			currentLevel = levels.farmland;
+		} else if (levelBtns[1].hovered) {
+			closeMenu();
+			viewing = "levels";
+			currentLevel = levels.forest;
+		} else if (levelBtns[2].hovered) {
+			closeMenu();
+			viewing = "levels";
+			currentLevel = levels.desert;
+		}
 	}
 }
 
@@ -93,12 +110,7 @@ class Camera {
 		let newZoom = document.getElementById("slidy2").value;
 	
 		this.x = (1 - (newZoom/this.zoom)) * 480;
-
-
 		this.y = (1 - (newZoom/this.zoom)) * 240;
-		//this.y += 0;
-		//console.log((balloon.y / 480));
-		//console.log(this.y)
 
 		ctx.transform(newZoom/this.zoom,0,0,newZoom/this.zoom,this.x,this.y);
 		this.zoom = newZoom;
@@ -109,6 +121,7 @@ let balloon;
 window.onload = function() {
 	balloon = new Balloon();
 	changeBiome(0);
+	createLevels();
 };
 
 let flocks = [
@@ -116,7 +129,6 @@ let flocks = [
 	[new Bird(-100,100)]
 ];
 let leaf1 = new Leaf(480,240);
-let sun =  new Sun();
 let cam = new Camera();
 
 function draw() {
@@ -132,29 +144,21 @@ function draw() {
 		drawMenu();
 	}
 
+	if (viewing == "levelMenu") {
+		drawLevelsMenu();
+	}
+
+	if (viewing == "levels") {
+		for (var i=0; i<currentLevel.length; i++) {
+			currentLevel[i].draw();
+		}
+		//currentLevel.draw();
+	}
+
 	if (viewing == "game") {
-		let sky = ctx.createLinearGradient(0,0,0,160);
-		sky.addColorStop(0,"#38acff");
-		sky.addColorStop(1,"#a3d9ff");
-		ctx.fillStyle = sky;
-		ctx.fillRect(0,0,960,480);
-
-		sun.draw();
-
 		for (var i=0; i<environment.length;i++) {
 			environment[i].draw();
 		}
-
-		// 	if (!balloon.onBeach) beach.draw();
-		// }
-		
-		// for (let i=0; i<flocks.length;i++) {
-		// 	for (let j=0;j<flocks[i].length;j++) {
-		// 		flocks[i][j].draw();
-		// 	}
-		// }
-		
-		//leaf1.draw();
 
 		cam.update();
 	}

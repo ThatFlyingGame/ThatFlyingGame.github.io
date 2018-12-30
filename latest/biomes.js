@@ -49,12 +49,48 @@ class Loop {
 	}
 }
 
+class Sky {
+	constructor(colourTop,colourBtm,sunId,sunY,sunDy) {
+		this.colourTop = colourTop;
+		this.colourBtm = colourBtm;
+
+		this.sun = document.getElementById(sunId);
+		this.sunY = sunY;
+		this.sunDy = sunDy;
+
+		this.sunX = 200;
+		this.sunR = 70;
+	}
+
+	draw() {
+		let sky = ctx.createLinearGradient(0,0,0,160);
+		sky.addColorStop(0,this.colourTop);
+		sky.addColorStop(1,this.colourBtm);
+		ctx.fillStyle = sky;
+		ctx.fillRect(0,0,960,480);
+
+		this.sunY += this.sunDy;
+
+		let centreX = this.sunX + this.sunR;
+		let centreY = cam.height + this.sunY + this.sunR;
+
+		let sunGradient = ctx.createRadialGradient(centreX,centreY,0,centreX,centreY,this.sunR);
+		sunGradient.addColorStop(0,"#FFCC00");
+		sunGradient.addColorStop(0.9,"#FFCC0000");
+		ctx.fillStyle = sunGradient;
+		ctx.fillRect(this.sunX,cam.height+this.sunY,this.sunR*2,this.sunR*2);
+
+		ctx.drawImage(this.sun,this.sunX+(this.sunR/2),cam.height+this.sunY+(this.sunR/2));
+	}
+}
+
 let environment = [];
 
 function changeBiome(number) {
 	//beach
 	if (number == 0) {
 		environment = [
+			new Sky("#38acff","#a3d9ff","sun",150,0),
 			new Loop("clouds",0.15,0),
 			new Loop("clouds2",0.2,70),
 			new Loop("clouds3",0.17,120),
@@ -71,15 +107,15 @@ function changeBiome(number) {
 
 	//farmland with houses
 	if (number == 1) {
-		environment.splice(8,0,balloon);	//move balloon to different layer
+		environment.splice(9,0,balloon);	//move balloon to different layer
 		environment.pop();				 	//remove old balloon
 		environment.pop();			     	//remove the sea layer	
 	}
 
 	//house to fence transition
 	if (number == "beach") {
-		environment.splice(9,0,new Loop("housesFence",1,420,1)); //add the fence
-		environment[9].state = 0;			//make the fence fade in
+		environment.splice(10,0,new Loop("housesFence",1,420,1)); //add the fence
+		environment[10].state = 0;			//make the fence fade in
 		//environment[9].x = 960-2;
 	}
 

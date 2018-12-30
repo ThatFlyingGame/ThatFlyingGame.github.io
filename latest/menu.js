@@ -1,5 +1,5 @@
 class MenuButton {
-	constructor(text,x,y,fontSize) {
+	constructor(text,x,y,fontSize,active) {
 		this.x = x;
 		this.y = y;
 		this.fontSize = fontSize;
@@ -10,7 +10,12 @@ class MenuButton {
 		this.rgt = x + 100;
 		this.hovered = false;
 		this.wasHovered = false;
-		this.active = true;
+
+		if (active == false) {
+			this.active = false;
+		} else {
+			this.active = true;
+		}
 	}
 
 	draw() {
@@ -36,13 +41,20 @@ class MenuButton {
 	}
 }
 
+function closeMenu() {
+	canvas.style.cursor = "default";
+	document.getElementById("musicMenu").pause();
+	document.getElementById("musicMenu2").pause();
+	document.getElementById("musicMenu2").loop = false;
+	document.getElementById("menuBackground").style.display = "none";
+	document.getElementById("menuBackground").pause();
+}
+
 let menuBtns = [
 	new MenuButton("play",480,240,50),
 	new MenuButton("to do list",480,320,50),
-	new MenuButton("dev mode",480,400,50)
+	new MenuButton("levels",480,400,50)
 ];
-
-menuBtns[2].active = false;
 
 function drawMenu() {
 	ctx.fillStyle = "white";
@@ -55,6 +67,34 @@ function drawMenu() {
 	for (let i=0;i<menuBtns.length;i++) {
 		menuBtns[i].draw();
 		if (menuBtns[i].hovered) oneHovered = true;
+	}
+	canvas.style.cursor = "initial";
+	if (oneHovered) canvas.style.cursor = "pointer";
+}
+
+let levelBtns = [
+	new MenuButton("farmland",280,240,50),
+	new MenuButton("forest",280,320,50),
+	new MenuButton("desert",280,400,50),
+	new MenuButton("locked",480,240,50,false),
+	new MenuButton("locked",480,320,50,false),
+	new MenuButton("locked",480,400,50,false),
+	new MenuButton("locked",680,240,50,false),
+	new MenuButton("locked",680,320,50,false),
+	new MenuButton("locked",680,400,50,false)
+];
+
+function drawLevelsMenu() {
+	ctx.fillStyle = "white";
+	ctx.textAlign = "center";
+
+	ctx.font = "75px Philosopher"
+	ctx.fillText("Choose Level",480,120);
+
+	let oneHovered = false;
+	for (let i=0;i<levelBtns.length;i++) {
+		levelBtns[i].draw();
+		if (levelBtns[i].hovered) oneHovered = true;
 	}
 	canvas.style.cursor = "initial";
 	if (oneHovered) canvas.style.cursor = "pointer";
