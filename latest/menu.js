@@ -74,13 +74,13 @@ function drawMenu() {
 
 let levelBtns = [
 	new MenuButton("farmland",280,240,50),
-	new MenuButton("forest",280,320,50),
-	new MenuButton("desert",280,400,50),
-	new MenuButton("locked",480,240,50,false),
-	new MenuButton("locked",480,320,50,false),
-	new MenuButton("locked",480,400,50,false),
-	new MenuButton("locked",680,240,50,false),
+	new MenuButton("forest",480,240,50),
+	new MenuButton("desert",680,240,50),
+	new MenuButton("jungle",280,320,50,false),
+	new MenuButton("void",480,320,50,false),
 	new MenuButton("locked",680,320,50,false),
+	new MenuButton("locked",280,400,50,false),
+	new MenuButton("locked",480,400,50,false),
 	new MenuButton("locked",680,400,50,false)
 ];
 
@@ -106,9 +106,9 @@ class startButton {
 		this.y = 240;
 		this.fontSize = 50;
 		this.top = this.y - this.fontSize;
-		this.btm = this.y + this.fontSize/2;
+		this.btm = this.y + this.fontSize/2 - 3;
 		this.lft = this.x - 50;
-		this.rgt = this.x + 150;
+		this.rgt = this.x + 148;
 		this.hovered = false;
 		this.btnColour = "#0072ff";
 	}
