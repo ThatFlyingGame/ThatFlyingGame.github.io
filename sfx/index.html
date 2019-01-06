@@ -1,79 +1,145 @@
 <html>
 
 <head>
-	<title>TFG Soundtrack</title>
+	<title>TFG SFX</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="../images/balloon.png">
+	<link rel="icon" type="image/png" href="../music/favicon.png">
+
+	<style>
+	body {
+		overflow: hidden;
+	}
+	#flex-container {
+	  display: flex;
+	  flex-wrap: nowrap;
+	 
+	}
+
+	#flex-container > div {
+	  margin: 10px;
+	  padding-right: 60px;
+	  height: 95vh;
+	  overflow-y: scroll;
+	  overflow-x: hidden;
+	}
+
+	#flex-container > div > img {
+		max-width: 95vh;
+		width: 100%;
+		position: absolute;
+		right: 0px;
+	}
+
+	#otherImg {
+		display: none;
+		width: 100%;
+	}	
+
+	@media only screen and (max-width: 900px) {
+		body {
+			overflow: scroll;
+		}
+
+	    #flex-container {
+	        display: block;
+	        flex-wrap: wrap;
+	    }
+
+	    #flex-container > div {
+		  height: auto;
+		  overflow: auto;
+		}
+
+	    #flex-container > div > img {
+	    	display: none;
+	    }
+
+	    #otherImg {
+	    	display: block;
+	    }
+	}						
+	</style>
 </head>
 
 <body>
-	<h2>Impact 1</h2>
-	<audio controls src="impact_1.mp3"></audio>
-	<h2>Ping 1</h2>
-	<audio controls src="ping_1.mp3"></audio>
-	<h2>Ping 2</h2>
-	<audio controls src="ping_2.mp3"></audio>
-	<h2>Booster 1</h2>
-	<audio controls src="booster_1.mp3"></audio>
-</body>
+	<div id="flex-container">
+		<div>
+			<h1>Ambient</h1>
+			<h2>Native Bush_1</h2>
+			<audio controls src="native bush_1.ogg"></audio>
+			<h2>Crickets_1</h2>
+			<audio controls src="crickets_1.ogg"></audio>
+			<h2>Twig_1</h2>
+			<audio controls src="twig_1.ogg"></audio>
+			<h2>Twig_2</h2>
+			<audio controls src="twig_2.ogg"></audio>
+			<h2>Twig_3</h2>
+			<audio controls src="twig_3.ogg"></audio>
+			<h2>Twig_4</h2>
+			<audio controls src="twig_4.ogg"></audio>
+			<h2>Twig_5</h2>
+			<audio controls src="twig_5.ogg"></audio>
+			<h2>Twig_6</h2>
+			<audio controls src="twig_6.ogg"></audio>
+			<h2>Twig_7</h2>
+			<audio controls src="twig_7.ogg"></audio>
+			<h2>_________________________</h2>
+			<h1>Animals</h1>
+			<h2>Fly_1</h2>
+			<audio controls src="fly_1.mp3"></audio>
+			<h2>Frog_1</h2>
+			<audio controls src="frog_1.mp3"></audio>
+			<h2>Morepork_1</h2>
+			<audio controls src="morepork_1.mp3"></audio>
+			<h2>Robot_1</h2>
+			<audio controls src="robot_1.mp3"></audio>
+			<h2>Robot_2</h2>
+			<audio controls src="robot_2.mp3"></audio>
+			<h2>Robot_3</h2>
+			<audio controls src="robot_3.mp3"></audio>
+			<h2>Sheep_1</h2>
+			<audio controls src="sheep_1.mp3"></audio>
+			<h2>Sheep_2</h2>
+			<audio controls src="sheep_2.mp3"></audio>
+			<h2>Sheep_3</h2>
+			<audio controls src="sheep_3.mp3"></audio>
+			<h2>Screechbird_1</h2>
+			<audio controls src="screechbird_1.mp3"></audio>
+			<h2>Screechbird_2</h2>
+			<audio controls src="screechbird_2.mp3"></audio>
+			<h2>Screechbird_3</h2>
+			<audio controls src="screechbird_3.mp3"></audio>
+			<h2>Spookybird_1</h2>
+			<audio controls src="spookybird_1.mp3"></audio>
+			<h2>_________________________</h2>
+			<h1>Balloon</h1>
+			<h2>Booster_1</h2>
+			<audio controls src="booster_1.ogg"></audio>
+			<h2>_________________________</h2>
+			<h1>Effects</h1>
+			<h2>Impact_1</h2>
+			<audio controls src="impact_1.mp3"></audio>
+			<h2>Ping_1</h2>
+			<audio controls src="ping_1.mp3"></audio>
+			<h2>Ping_2</h2>
+			<audio controls src="ping_2.mp3"></audio>
+			<h2>Pew_1</h2>
+			<audio controls src="pew_1.mp3"></audio>
+			<h2>_________________________</h2>
+			<h1>Menu</h1>
+			<h2>Menu Tick_1</h2>
+			<audio controls src="menu tick_1.mp3"></audio>
+			<h2>Menu Click_1</h2>
+			<audio controls src="menu click_1.mp3"></audio>
+			<h2>Splashscreen2</h2>
+			<audio controls src="splashscreen2.mp3"></audio>
+		</div>
+		<div style="width:calc(100% - 300px);position:relative;right:0px">
+			<img src="cover.png">
+		</div>
+	</div>
 
-<html>
-
-<head>
-	<title>TFG Soundeffects</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="../images/balloon.png">
-</head>
-
-<body>
-<h2>Nature</h2>
-	<h3>Sheep 1</h3>
-	<audio controls src="sheep_1.mp3"></audio>
-	<h3>Sheep 2</h3>
-	<audio controls src="sheep_2.mp3"></audio>
-	<h3>Sheep 3</h3>
-	<audio controls src="sheep_3.mp3"></audio>
-	<h3>Frog 1</h3>
-	<audio controls src="frog_1.mp3"></audio>
-	<h3>Fly 1</h3>
-	<audio controls src="fly_1.mp3"></audio>
-	<h3>Birdsong 1</h3>
-	<audio controls src="birdsong_1.mp3"></audio>
-	<h3>Morepork 1</h3>
-	<audio controls src="morepork_1.mp3"></audio>
-	<h3>Spookybird 1</h3>
-	<audio controls src="spookybird_1.mp3"></audio>
-	<h3>Screechbird 1</h3>
-	<audio controls src="screechbird_1.mp3"></audio>
-	<h3>Screechbird 2</h3>
-	<audio controls src="screechbird_2.mp3"></audio>
-	<h3>Screechbird 3</h3>
-	<audio controls src="screechbird_3.mp3"></audio>
-	<h3>Robot 1</h3>
-	<audio controls src="robot_1.mp3"></audio>
-	<h3>Robot 2</h3>
-	<audio controls src="robot_2.mp3"></audio>
-	<h3>Robot 3</h3>
-	<audio controls src="robot_3.mp3"></audio>
-
-<h2>Balloon</h2>
-	<h3>Booster 1</h3>
-	<audio controls src="booster_1.mp3"></audio>
-	
-<h2>Ambient</h2>
-
-<h2>Effects</h2>
-	<h3>Impact 1</h3>
-	<audio controls src="impact_1.mp3"></audio>
-	<h3>Ping 1</h3>
-	<audio controls src="ping_1.mp3"></audio>
-	<h3>Ping 2</h3>
-	<audio controls src="ping_2.mp3"></audio>
-	<h3>Pew 1</h3>
-	<audio controls src="pew_1.mp3"></audio>
-	
-	<h3>Menu Tick 1</h3>
-	<audio controls src="menu tick_1.mp3"></audio>
+	<img id="otherImg" src="cover.jpg">
 </body>
 
 </html>
