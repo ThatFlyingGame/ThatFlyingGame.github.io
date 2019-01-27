@@ -34,6 +34,13 @@ class Loop {
 
 		let height = this.image.height * (960 / this.image.width)
 		if (this.state == 1 || this.state == 2) ctx.drawImage(this.image, this.x, cam.height+this.y, 960, height);
+
+		if (this.image == document.getElementById("beach")) {
+			let thingggg = document.getElementById("trees");
+		} 
+		else {
+			let thingggg = this.image;
+		}
 		
 		if (this.state == 1 || this.state == 0 || this.state == 3) ctx.drawImage(this.image, this.x + 960, cam.height+this.y, 960 , height);
 

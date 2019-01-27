@@ -1,3 +1,12 @@
+function draw() {
+	ctx.clearRect(0,0,canvas.width,canvas.height);
+	ctx.fillStyle = document.getElementById("canvasColour").value;
+	ctx.fillRect(0,0,canvas.width,canvas.height);
+
+	theAnimation.draw();
+}
+
+
 class FrameAnimation {
 	constructor(image,x,y,dx,dy,numFrames,frameRate,loop,mode) {
 		this.image = image;
@@ -15,27 +24,12 @@ class FrameAnimation {
 		let delay = 1000/frameRate;
 		let myself = this;
 		function drawThis() {
-			myself.draw();
+			myself.newFrame();
 		}
 		this.timer = setInterval(drawThis, delay);
-	}	
-	
-	draw() {
-		ctx.clearRect(0,0,canvas.width,canvas.height); //REMOVE THIS ONCE IT'S ON THE ACTUAL THING
+	}
 
-		ctx.fillStyle = document.getElementById("canvasColour").value; //REMOVE THIS ONCE IT'S ON THE ACTUAL THING
-		ctx.fillRect(0,0,canvas.width,canvas.height); //REMOVE THIS ONCE IT'S ON THE ACTUAL THING
-
-		this.frameHeight = this.image.height / this.frameNum;
-		this.frameWidth = this.image.width;
-
-		if (this.mode == "scroll") this.scroll();
-
-		this.x += this.dx;
-		this.y += this.dy;
-
-		ctx.drawImage(this.image, 0, this.currentFrame * this.frameHeight, this.frameWidth, this.frameHeight, this.x, this.y, this.frameWidth, this.frameHeight);
-		
+	newFrame() {
 		this.currentFrame++;
 
 		if (this.currentFrame >= this.frameNum) {
@@ -44,9 +38,19 @@ class FrameAnimation {
 		}
 
 		if (!this.active) clearInterval(this.timer);
-	}
+	}	
+	
+	draw() {
+		this.frameHeight = this.image.height / this.frameNum;
+		this.frameWidth = this.image.width;
 
-	scroll() {
-		if (this.x + this.frameWidth < 0) this.x = canvas.width;
+		if (this.mode == "scroll" && this.x + this.frameWidth < 0) {
+			this.x = canvas.width;
+		}
+
+		this.x += this.dx;
+		this.y += this.dy;
+
+		ctx.drawImage(this.image, 0, this.currentFrame * this.frameHeight, this.frameWidth, this.frameHeight, this.x, this.y, this.frameWidth, this.frameHeight);
 	}
 }

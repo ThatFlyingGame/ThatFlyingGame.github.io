@@ -51,7 +51,7 @@ function mouseClick() {
 			document.getElementById("splashVideo").style.display = "none";
 			document.getElementById("menuBackground").play();
 			document.getElementById("musicMenu").play();
-		},6000)
+		},600)
 		
 		setTimeout(function(){
 			document.getElementById("musicMenu2").loop = true;

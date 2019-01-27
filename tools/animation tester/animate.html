@@ -44,6 +44,8 @@
 
 		if (theAnimation !== 0) theAnimation.active = false;
 		theAnimation = new FrameAnimation(theImage,0,0,0,0,numberOfFrames,rateOfFrames,true);
+
+		setInterval(draw,1000/60);
 	}
 
 	</script>
