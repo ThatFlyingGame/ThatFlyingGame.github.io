@@ -14,13 +14,15 @@ timer = setInterval(draw,1000/60);
 window.onload = function() {
 	document.getElementById("menuBackground").load();
 	document.getElementById("balloonBooster").load();
+	document.getElementById("balloonBooster").volume = 0.4;
+	document.getElementById("nativeBush1").load();
+	
 }
 
 function keyDown(event) {
 	if (event.keyCode == 32) {
 		if (goingUp = "initial") speed = 1;
 		goingUp = true;
-		document.getElementById("balloonBooster").volume = 0.4;
 		document.getElementById("balloonBooster").play();
 	}
 }
